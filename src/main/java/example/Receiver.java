@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class Receiver {
 
-	@KafkaListener(topics = "string-topic")
+	@KafkaListener(topics = "int-topic")
 	public void consume(String message) {
 		System.out.println("Received: " + message);
 	}

@@ -14,15 +14,15 @@ public class Sender {
 
 	private AtomicInteger count = new AtomicInteger();
 
-	private final KafkaTemplate<String, String> template;
+	private final KafkaTemplate<String, Integer> template;
 
-	public Sender(KafkaTemplate<String, String> template) {
+	public Sender(KafkaTemplate<String, Integer> template) {
 		this.template = template;
 	}
 
 	@Scheduled(fixedRate = 1000)
 	public void sendMessage() {
-		this.template.send("string-topic", "message: " + this.count.getAndIncrement());
+		template.send("int-topic", count.getAndIncrement());
 	}
 
 }
